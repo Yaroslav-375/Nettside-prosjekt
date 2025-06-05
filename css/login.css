@@ -1,0 +1,295 @@
+body {
+    margin: 0;
+    background-color: rgb(75, 74, 74);
+}
+
+/* ====================================================================
+                                Navbar
+==================================================================== */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+    height: 70px;
+    margin-bottom: 35px;
+    box-shadow: 0px 1px 7px 0px rgba(255, 255, 255, 0.25);
+}
+   
+/* ////////////////////////////// Logo ////////////////////////////// */
+.logo a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
+
+/* ====================================================================
+                                    Main
+==================================================================== */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    font-family: Arial, sans-serif;
+}
+.main-container {
+    position: relative;
+    width: 80%;
+    height: 90%; 
+    margin-bottom: 20px;
+    background-color: rgb(75, 74, 74);
+    border-radius: 20px;
+    overflow: hidden;
+}
+.form-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    display: flex; 
+}
+/* ///////////////////////// Forms container ///////////////////////// */ 
+.form-container {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 0.6s ease;
+    z-index: 5;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* ========================= Login form ========================= */
+.login-form {
+    position: absolute;
+    transition: 0.3s;
+    width: 60%;
+}
+.login-form input {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+.login-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ========================= Signup form ========================= */ 
+.signup-form {
+    position: absolute;
+    opacity: 0;
+    width: 60%;
+    transition: 0.3s;
+    z-index: -1;
+}
+.signup-form input {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+.signup-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+/* ---------------------------- Error ---------------------------- */
+.error-message {
+    color: red; 
+    font-size: 0.9em; 
+    display: none; 
+    padding: 5px;
+    border: 1px solid red;
+    background-color: #ffe6e6;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* ------------------------ Google button ------------------------ */
+.google-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-size: 1em;
+    cursor: pointer;
+}
+.google-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.google-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* ------------------------- Form button ------------------------- */
+form button {
+    width: 50%;
+    background-color: #333;
+    border: solid 2px #fff;
+    border-radius: 25px;
+    padding: 10px;
+    margin-top: 15px;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+form button:hover {
+    background-color: #585858;
+}
+
+/* ////////////////////// Secondary container ////////////////////// */ 
+.secondary-container {
+    position: absolute;
+    right: 0;
+    width: 50%; 
+    height: 100%;
+    background-color: #fff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    transition: 0.6s ease; 
+}
+/* ========================= Button container ========================= */
+.login-button-container {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    transition: 0.6s;
+}
+.signup-button-container {
+    transition: 0.6s;
+}
+/* ------------------------------ Button ------------------------------ */
+.open-form-button {
+    border: solid 2px #333;
+    border-radius: 25px;
+    padding: 10px 25px;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+}
+.open-form-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* ====================================================================
+                                Animation
+==================================================================== */
+/* ///////////////////////// Form container ///////////////////////// */ 
+.form-section.move .form-container {
+    transform: translateX(100%);
+}
+.form-section.move .signup-form {
+    opacity: 100;
+    z-index: 1;
+}
+.form-section.move .login-form {
+    opacity: 0;
+    z-index: -1;
+}
+
+/* ///////////////////////// Secondary container ///////////////////////// */ 
+.form-section.move .secondary-container {
+    transform: translateX(-100%);
+}
+.form-section.move .login-button-container {
+    z-index: 1;
+    opacity: 100;
+}
+.form-section.move .signup-button-container {
+    z-index: -1;
+    opacity: 0;
+}
+
+/* ====================================================================
+                            Adaptivity - 650px
+==================================================================== */
+@media(max-width: 650px) {
+    /* //////////////////////////// Navbar //////////////////////////// */
+    nav {
+        height: 55px;
+        margin-bottom: 20px;
+    }
+    
+    /* ///////////////////////////// Main ///////////////////////////// */
+    main {
+        height: 87vh;
+    }
+    .main-container {
+        position: relative;
+        width: 80%; 
+        height: 100%; 
+        margin-bottom: 20px;
+        background-color: rgb(75, 74, 74);
+        border-radius: 10px;
+        overflow: hidden; 
+    }  
+    /* ========================= Form container ========================= */
+    .form-container {
+        width: 100%; 
+        height: 70%;
+        z-index: 1;
+    }
+    .form-section.move .form-container {
+        transform: translateY(43%);
+    }
+    /* -------------------------- Signup form -------------------------- */
+    .signup-form {
+        margin-top: -15px;
+    }
+    .signup-form h1{
+        font-size: 24px;
+    }
+    .signup-form button{
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .login-form h1{
+        font-size: 24px;
+    }
+    .login-form button{
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .login-form .google-button, .signup-form .google-button {
+        font-size: 14px;
+    }
+
+    /* ========================= Form container ========================= */
+    .secondary-container {
+        bottom: 0;
+        width: 100%; 
+        height: 30%;
+        z-index: 5;
+    }
+    .form-section.move .secondary-container {
+        transform: translateY(-233%);
+    }
+}

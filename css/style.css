@@ -1,0 +1,243 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: rgb(75, 74, 74);
+    color: #fff;
+    margin: 0;
+}
+
+/* ====================================================================
+                                Navbar
+==================================================================== */
+nav {
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 1px 7px 0px rgba(255, 255, 255, 0.25);
+    padding: 10px 20px;
+}
+/* ////////////////////////////// Logo ////////////////////////////// */
+.logo {
+    z-index: 2;
+}
+.logo a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+}
+
+/* ///////////////////////// Links & Buttons ///////////////////////// */
+.navbar {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+/* ============================== Links ============================== */
+.navbar-links {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+.navbar-links a{
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+/* ------------------------------ After ------------------------------ */
+.navbar-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #fff;
+    width: 0;
+    transition: .3s;
+}
+.navbar-links a:hover::after {
+    width: 100%;
+}
+.navbar-links a:not(:hover)::after {
+    right: 0;
+    left: auto;
+}
+
+/* ============================= Buttons ============================= */
+.navbar-buttons {
+    margin-left: auto;
+}
+.navbar-button {
+    text-decoration: none;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer; 
+}
+/* ------------------------------ Signup ------------------------------ */
+.navbar-button.signup {
+    background-color: rgb(75, 74, 74);
+    color: #fff;
+    border: solid 2px #fff;
+    margin-right: 10px;
+}
+.navbar-button.signup:hover {
+    background-color: #585858;
+}
+
+/* ------------------------------- Login ------------------------------- */
+.navbar-button.login {
+    background-color: #fff;
+    color: rgb(75, 74, 74);
+}
+.navbar-button.login:hover {
+    background-color: rgb(205, 204, 204);
+}
+
+/* ------------------------------- Logout ------------------------------- */
+.navbar-button.logout {
+    background-color: rgb(75, 74, 74);
+    color: #fff;
+    border: solid 2px #fff;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+.navbar-button.logout:hover {
+    background-color: #585858;
+}
+
+.logged-in {
+    display: flex;
+    align-items: center;
+}
+
+/* ///////////////////////// Burger menu ///////////////////////// */
+label {
+    display: none;
+}
+#burger-toggle {
+    display: none;
+}
+
+/* ====================================================================
+                                    Main
+==================================================================== */
+main {
+    text-align: center;
+    font-size: 36px;
+    padding-top: 10%;
+    flex: 1;
+}
+
+/* ====================================================================
+                                Footer
+==================================================================== */
+
+footer {
+    background-color: #333;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 100px;
+}
+
+/* ====================================================================
+                            Adaptivity - 650px
+==================================================================== */
+@media (max-width: 650px) {
+    /* /////////////////////////// Header /////////////////////////// */
+    nav {
+        height: 60px;
+    }
+
+    /* ///////////////////////// Burger icon ///////////////////////// */
+    label {
+        position: absolute;
+        right: 20px;
+        display: block;
+        height: 25px;
+        width: 30px;
+        z-index: 5;
+    }
+    label::after, label::before, label span{
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        border-radius: 5px;
+        transition: .3s;
+    }
+    label::after {
+        content: "";
+        top: 0;
+    }
+    label::before {
+        content: "";
+        bottom: 0;
+    }
+    label span{
+        top: 11px;
+    }
+
+    /* ///////////////////////// Burger pressed ///////////////////////// */
+    #burger-toggle:checked ~ label::after {
+        transform: rotate(45deg);
+        top: 12px;
+        bottom: 10px;
+    }
+    #burger-toggle:checked ~ label::before {
+        transform: rotate(-45deg);
+        top: 12px;
+    }
+    #burger-toggle:checked ~ label span {
+        transform: rotate(-45deg);
+        top: 12px;
+    }
+    #burger-toggle:checked ~ .navbar {
+        top: 0;
+        bottom: 0;
+    }
+
+    /* //////////////////////////// Navbar //////////////////////////// */
+    .navbar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        margin: 0;
+        background-color: #333;
+        justify-content: center;
+        z-index: 1;
+        flex-direction: column;
+        gap: 50px;
+        text-align: center;
+        top: -100vh;
+        bottom: 100vh;
+        transition: .5s;
+    }
+    /* ============================= Links ============================= */
+    .navbar-links {
+        flex-direction: column;
+        margin-left: -30px;
+    }
+    .navbar-links a {
+        font-size: 24px;
+    }
+
+    /* ============================= Buttons ============================= */
+    .navbar-buttons {
+        margin: 0;
+    }
+    .logged-in {
+        padding-left: 50px;
+    }
+
+    /* /////////////////////////////// Main /////////////////////////////// */
+    main {
+        font-size: 20px;
+    }
+}
